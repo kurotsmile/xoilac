@@ -26,6 +26,7 @@ class Post{
             html+='<input type="email" class="form-control" id="'+field.id+'" placeholder="Enter data">';
             html+='</div>';
         });
+        html+='<a href="#" class="btn btn-primary"><span data-feather="plus-circle"></span> Add</a>';
         html+='</div>';
         html+='</form>';
         return html;
@@ -35,6 +36,7 @@ class Post{
 class CMS{
     id_project="";
     api_key="";
+    home_url="";
 
     list_post=[];
     index_post_cur=0;
@@ -51,7 +53,7 @@ class CMS{
     show_list_menu_sidebar(){
         $("#list_post").html('');
         $.each(this.list_post,function(index,p){
-            var emp_post=$('<li class="nav-item"><a class="nav-link '+(cms.index_post_cur===index ? "active":"")+'" aria-current="page" href="#"><span data-feather="home"></span> '+p.label+'</a></li>');
+            var emp_post=$('<li class="nav-item"><a class="nav-link '+(cms.index_post_cur===index ? "active":"")+'" aria-current="page" href="#"><span data-feather="database"></span> '+p.label+'</a></li>');
             $(emp_post).click(function(){
                 cms.index_post_cur=index;
                 cms.show_post_object(index);
@@ -64,6 +66,7 @@ class CMS{
     show_post_object(index){
         this.show_list_menu_sidebar();
         $("#main_contain").html(this.list_post[index].show_form_add());
+        feather.replace();
     }
 
     field(id,name,type){
