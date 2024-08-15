@@ -9,7 +9,7 @@
     <meta name="generator" content="Rot Tran 2024">
     <title>CMS Manager Data</title>
     <link href="bootstrap5/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="cms/icon.ico">
+    <link rel="icon" href="Carrot-Framework-Web/icon.ico">
     <link href="Carrot-Framework-Web/carrot_cms.css" rel="stylesheet">
     <meta name="theme-color" content="#7952b3">    
 </head>
@@ -26,7 +26,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out</a>
+                <a class="nav-link px-3" href="#" onclick="cr.show_setting();return false;">Setting</a>
             </div>
         </div>
     </header>
@@ -65,9 +65,7 @@
     <script src="Carrot-Framework-Web/cr_firestore.js"></script>
     <script src="Carrot-Framework-Web/cr_cms.js"></script>
     <script>
-        
-        cr_firestore.id_project="xoilacfoodball";
-        cr_firestore.api_key="AIzaSyD2cbGXjqxKHzmtARX6ejsCDJePDpth39Y";
+        cr.setColor("#0da4fd");
 
         var p_banner=new Post();
         p_banner.id_collection="banner";
@@ -81,6 +79,8 @@
         var p_blv=new Post();
         p_blv.id_collection="blv";
         p_blv.label="Bình Luận Viên";
+        p_blv.data_form_add.fields.push(cms.field('name',"Tên Bình Luận Viên"));
+        p_blv.data_form_add.fields.push(cms.field('avatar',"Ảnh đại diện"));
         cms.add(p_blv);
 
         var p_tip=new Post();
