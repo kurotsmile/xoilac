@@ -27,7 +27,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id="inp_cms_search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#" onclick="cr.show_setting();return false;">Setting</a>
+                <a class="nav-link px-3" href="#" onclick="cr.show_setting();return false;"><i class="fas fa-cog"></i> Setting</a>
             </div>
         </div>
     </header>
@@ -66,9 +66,7 @@
     <script src="Carrot-Framework-Web/cr_firestore.js"></script>
     <script src="Carrot-Framework-Web/cr_cms.js"></script>
     <script>
-        cr.setColor("#0da4fd");
-        cr_firestore.id_project="xoilacfoodball";
-        cr_firestore.api_key="AIzaSyD2cbGXjqxKHzmtARX6ejsCDJePDpth39Y";
+        
 
         var p_banner=new Post();
         p_banner.id_collection="banner";
@@ -109,6 +107,9 @@
         cms.add(ads_banner);
    
         $(document).ready(function(){
+            cr.setColor("#0da4fd");
+            cr_firestore.id_project="xoilacfoodball";
+            cr_firestore.api_key="AIzaSyD2cbGXjqxKHzmtARX6ejsCDJePDpth39Y";
             cms.onLoad();
         });
     </script>
