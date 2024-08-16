@@ -1,9 +1,27 @@
 class App{
 
     s_class_banner_home=["","bet","bet3","bet4"];
+    index_tip=0;
 
     onLoad(){
-        
+        this.load_banner_home();
+        this.load_tip_home();
+    }
+
+    load_tip_home(){
+        cr_firestore.list("tip",(data)=>{
+            var list_tip=data.sort(function(a,b){
+                return a.order - b.order;
+            });
+            $.each(list_tip,function(index,t){
+                var item_title_tip=$('<li '+(app.index_tip===index ? 'class="active"':"")+'><a href="#xoilactv'+index+'" class="nav-item">'+t.title+'</a></li>');
+                $("#list_tip_title").append(item_title_tip);
+                var html_body='';
+                html_body+='<h4 id="xoilactv'+index+'">'+t.title+'</h4>';
+                html_body+=t.body;
+                $("#list_tip_body").append(html_body);
+            });
+        });
     }
 
     load_banner_home(){
@@ -12,7 +30,10 @@ class App{
             $("#main_banner_right").html('');
             let length_post=data.length;
             let div_post=length_post/2;
-            $.each(data,function(index,p){
+            var list_p=data.sort(function(a,b){
+                return a.order - b.order;
+            });
+            $.each(list_p,function(index,p){
                 p["index"]=index;
                 if(index<div_post){
                     $("#main_banner_left").append(app.banner_item(p));
