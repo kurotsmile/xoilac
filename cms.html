@@ -76,7 +76,7 @@
             p_banner.data_form_add.fields.push(cms.field("btn_text", "Button Text", "text"));
             p_banner.data_form_add.fields.push(cms.field("image", "Ảnh Banner", "file"));
             p_banner.data_form_add.fields.push(cms.field("link", "Link Banner", "text"));
-
+            p_banner.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
             cms.add(p_banner);
 
             var p_blv = new Post();
@@ -84,6 +84,7 @@
             p_blv.label = "Bình Luận Viên";
             p_blv.data_form_add.fields.push(cms.field('name', "Tên Bình Luận Viên"));
             p_blv.data_form_add.fields.push(cms.field('avatar', "Ảnh đại diện","file"));
+            p_blv.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
             cms.add(p_blv);
 
             var p_tip = new Post();
@@ -91,6 +92,7 @@
             p_tip.label = "Giới Thiệu - Hỏi đáp";
             p_tip.data_form_add.fields.push(cms.field('title', "Tiêu đề"));
             p_tip.data_form_add.fields.push(cms.field('body', "Nội dung"));
+            p_tip.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
             cms.add(p_tip);
 
             var live_tv = new Post();
@@ -104,7 +106,9 @@
             ads_banner.id_collection = "ads";
             ads_banner.label = "Quảng cáo (banner Ads)";
             ads_banner.data_form_add.fields.push(cms.field('ads_id', "ID quảng cáo"));
-            ads_banner.data_form_add.fields.push(cms.field('image', "Ảnh banner cáo","file"));
+            ads_banner.data_form_add.fields.push(cms.field('image', "Ảnh banner quảng cáo","file"));
+            ads_banner.data_form_add.fields.push(cms.field('link', "Liên kết"));
+            ads_banner.data_form_add.fields.push(cms.field('position', "Vị trí"));
             cms.add(ads_banner);
 
             cr.setColor("#0da4fd");
