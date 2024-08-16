@@ -24,7 +24,7 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id="inp_cms_search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="#" onclick="cr.show_setting();return false;">Setting</a>
@@ -90,12 +90,23 @@
         var p_tip=new Post();
         p_tip.id_collection="tip";
         p_tip.label="Giới Thiệu - Hỏi đáp";
+        p_tip.data_form_add.fields.push(cms.field('title',"Tiêu đề"));
+        p_tip.data_form_add.fields.push(cms.field('body',"Nội dung"));
         cms.add(p_tip);
 
         var live_tv=new Post();
         live_tv.id_collection="tv_live";
         live_tv.label="TV Live";
+        live_tv.data_form_add.fields.push(cms.field('title',"Tên Kênh"));
+        live_tv.data_form_add.fields.push(cms.field('url',"Url Phát trực tiếp (EmpCode)"));
         cms.add(live_tv);
+
+        var ads_banner=new Post();
+        ads_banner.id_collection="ads";
+        ads_banner.label="Quảng cáo (banner Ads)";
+        ads_banner.data_form_add.fields.push(cms.field('ads_id',"ID quảng cáo"));
+        ads_banner.data_form_add.fields.push(cms.field('image',"Ảnh banner cáo"));
+        cms.add(ads_banner);
    
         $(document).ready(function(){
             cms.onLoad();
