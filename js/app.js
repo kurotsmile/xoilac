@@ -4,8 +4,52 @@ class App{
     index_tip=0;
 
     onLoad(){
+        this.load_info_home();
         this.load_banner_home();
+        this.load_blv();
         this.load_tip_home();
+    }
+
+    load_info_home(){
+        cr_firestore.get("setting","setting_home",(data)=>{
+            $("#logo_home_page").attr("src",data.logo);
+            $("#title_home_page").html(data.title);
+            $("#subtitle_home_page").html(data.subtitle);
+            $("#title_blv").html(data.title_blv);
+            $("#subtitle_blv").html(data.subtitle_blv);
+            $("#banner_home").attr("src",data.banner_home);
+            $("#banner_home_title").html(data.banner_home_title);
+            $("#banner_home_tip").html(data.banner_home_tip);
+        },()=>{
+            app.load_info_home();
+        });
+    }
+
+    load_blv(){
+        cr_firestore.list("blv",(data)=>{
+            var list_blv=data.sort(function(a,b){
+                return a.order - b.order;
+            });
+            $("#list_blv_row_1").html('');
+            $("#list_blv_row_2").html('');
+            let length_post=data.length;
+            let div_post=length_post/2;
+            $.each(list_blv,function(index,b){
+                b["index"]=index;
+                if(index<div_post-1){
+                    $("#list_blv_row_1").append(app.box_item_blv(b));
+                }else{
+                    $("#list_blv_row_2").append(app.box_item_blv(b));
+                }
+            });
+        },()=>{
+            app.load_blv();
+        });
+    }
+
+    box_item_blv(data){
+        var html='<div class="media"><img class="lzl" src="'+data.avatar+'" alt="" width="63" height="63"><div class="media-body">'+data.name+'</div></div>';
+        return html;
     }
 
     load_tip_home(){
