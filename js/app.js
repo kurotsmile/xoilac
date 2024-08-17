@@ -26,23 +26,42 @@ class App{
         });
     }
 
-    conect_data(){
+    conect_data() {
+        const url = 'https://api-v1.zetcdn.site/Api';
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Token': '3ce020b50866983840c6f018c7fdf666'
+        };
+        const body = 'type=1';
+
+        fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body
+        })
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.error('Error:', error));
+
         $.ajax({
-            url: 'https://api-v1.zetcdn.site/Api', 
+            url: 'https://api-v1.zetcdn.site/Api',
             type: 'POST',
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'token': '3ce020b50866983840c6f018c7fdf666' 
+                'token': 'd2113c935858e80fcf8879ab3c07530d'
             },
             data: {
-                type: 1 
+                type: 1
             },
-            success: function(response) {
+            success: function (response) {
                 alert(JSON.stringify(response));
                 console.log('Phản hồi từ server:', response);
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.error('Lỗi:', textStatus, errorThrown);
+                console.log(jqXHR);
+                console.log(errorThrown);
             }
         });
     }
