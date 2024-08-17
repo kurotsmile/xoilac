@@ -8,6 +8,7 @@ class App{
         this.load_banner_home();
         this.load_blv();
         this.load_tip_home();
+        this.conect_data();
     }
 
     load_info_home(){
@@ -22,6 +23,27 @@ class App{
             $("#banner_home_tip").html(data.banner_home_tip);
         },()=>{
             app.load_info_home();
+        });
+    }
+
+    conect_data(){
+        $.ajax({
+            url: 'https://api-v1.zetcdn.site/Api', 
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'token': '3ce020b50866983840c6f018c7fdf666' 
+            },
+            data: {
+                type: 1 
+            },
+            success: function(response) {
+                alert(JSON.stringify(response));
+                console.log('Phản hồi từ server:', response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Lỗi:', textStatus, errorThrown);
+            }
         });
     }
 
