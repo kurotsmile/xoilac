@@ -36,7 +36,18 @@
     <meta name="savepage-state"
         content="Standard Items; Retain cross-origin frames; Merge CSS images; Remove unsaved URLs; Load lazy images in existing content; Max frame depth = 5; Max resource size = 50MB; Max resource time = 10s;">
     <meta name="savepage-version" content="33.9">
-    <meta name="savepage-comments" content="">
+  <!-- Optional JavaScript -->
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="Carrot-Framework-Web/cr_firestore.js"></script>
+  <script src="js/app.js?v=2"></script>
+  <script src="js/app_live.js?v=2"></script>
+  <script>
+      $(document).ready(function(){
+          cr_firestore.id_project = "xoilacfoodball";
+          cr_firestore.api_key = "AIzaSyD2cbGXjqxKHzmtARX6ejsCDJePDpth39Y";
+          app.onLoad();
+      });
+  </script>
 </head>
 
 <body class="homepage">
@@ -196,71 +207,6 @@
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", lazyImg("lzl"), {
-            passive: true
-        });
-
-        function PartnerTopLeft() {
-            var link = document.getElementById('partner1');
-            link.href = 'https://da88.com/?a=exo_566f64993b8461c988c29c522527afa1&utm_source=ldp90phut&utm_medium=topbanner-700x70-1&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/700x70.gif';
-        }
-
-        function PartnerTopRight() {
-            var link = document.getElementById('partner2');
-            link.href = 'https://da88.com/?a=exo_1fc43c5e53a1ab31668f8dd6d00417c7&utm_source=ldp90phut&utm_medium=topbanner-700x70-2&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/700x70.gif';
-        }
-
-        function PartnerBottomUp() {
-            var link = document.getElementById('partner3');
-            link.href = 'https://fabet.com/?a=exo_e1b1fb657c010d2d90fd0453a9f356fd&utm_source=ldp90phut&utm_medium=catfish-1095x100-1&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/fabet-1330x90.gif';
-        }
-
-        function PartnerBottomDown() {
-            var link = document.getElementById('partner4');
-            link.href = 'https://lucky88.com/?a=exo_a8a6def4e75cfcbc9fb4fd68946a21b6&utm_source=ldp90phut&utm_medium=catfish-1095x100-2&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/lucky88-1330x90.gif';
-        }
-		
-		function PartnerBottomUpM() {
-            var link = document.getElementById('partner5');
-            link.href = 'https://fabet.com/?a=exo_e1b1fb657c010d2d90fd0453a9f356fd&utm_source=ldp90phut&utm_medium=catfish-1095x100-1&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/fabet-728x90.gif';
-        }
-
-        function PartnerBottomDownM() {
-            var link = document.getElementById('partner6');
-            link.href = 'https://lucky88.com/?a=exo_a8a6def4e75cfcbc9fb4fd68946a21b6&utm_source=ldp90phut&utm_medium=catfish-1095x100-2&utm_campaign=cpd&utm_term=live';
-
-            var img = link.querySelector('img');
-            img.src = 'images/Lucky88-728x90.gif';
-        }
-    </script>
-    <script src="Carrot-Framework-Web/cr_firestore.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-        $(document).ready(function(){
-            cr_firestore.id_project = "xoilacfoodball";
-            cr_firestore.api_key = "AIzaSyD2cbGXjqxKHzmtARX6ejsCDJePDpth39Y";
-            app.onLoad();
-        });
-    </script>
 </body>
 
 </html>

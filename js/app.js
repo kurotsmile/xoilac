@@ -1,14 +1,55 @@
 class App{
 
+    mode="pulic";
     s_class_banner_home=["","bet","bet3","bet4"];
     index_tip=0;
 
-    onLoad(){
-        this.load_info_home();
-        this.load_banner_home();
-        this.load_blv();
-        this.load_tip_home();
-        this.conect_data();
+    data_live={};
+
+    onLoad() {
+        let page=this.arg("p");
+        if(page){
+            if(page=="live"){
+                app.show_page_live();
+            }
+        }else{
+            app.show_page_home();
+        }
+    }
+
+    show_page_home(){
+        this.load_body("home.html", () => {
+            app.load_info_home();
+            app.load_banner_home();
+            app.load_blv();
+            app.load_tip_home();
+            app.conect_data();
+        });
+    }
+
+    arg(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        var sParameterName;
+    
+        for (var i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+            
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    }
+
+    load_body(html_file,act_done=null){
+        $('body').load('html/'+html_file, function(response, status, xhr) {
+            if (status === 'success') {
+                if(act_done) act_done();
+            } else {
+                console.log('Error loading content: ' + xhr.status + ' ' + xhr.statusText);
+            }
+        });
     }
 
     load_info_home(){
@@ -27,43 +68,33 @@ class App{
     }
 
     conect_data() {
-        const url = 'https://api-v1.zetcdn.site/Api';
-        const headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Token': '3ce020b50866983840c6f018c7fdf666'
-        };
-        const body = 'type=1';
-
-        fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: body
-        })
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.error('Error:', error));
-
-        $.ajax({
-            url: 'https://api-v1.zetcdn.site/Api',
-            type: 'POST',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'token': 'd2113c935858e80fcf8879ab3c07530d'
-            },
-            data: {
-                type: 1
-            },
-            success: function (response) {
-                alert(JSON.stringify(response));
-                console.log('Phản hồi từ server:', response);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error('Lỗi:', textStatus, errorThrown);
-                console.log(jqXHR);
-                console.log(errorThrown);
-            }
-        });
+        if(this.mode=="dev"){
+            $.ajax({
+                url: 'https://nodejs-server-fnc.vercel.app/api/api.js',
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    alert("Success!!:" + JSON.stringify(response));
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error Server:', error);
+                    alert("Error!!");
+                }
+            });
+        }else{
+            $.ajax({
+                url: 'https://nodejs-server-fnc.vercel.app/api/proxy.js',
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    alert("Success!!:" + JSON.stringify(response));
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error Server:', error);
+                    alert("Error!!");
+                }
+            });
+        }
     }
 
     load_blv(){
@@ -126,6 +157,17 @@ class App{
                     $("#main_banner_right").append(app.banner_item(p));
                 }
             });
+
+            $("#banner_aMQRTZpRm0qHLNj95ifF").click(function(){
+                app.show_page_live();
+                return false;
+            });
+        });
+    }
+
+    show_page_live(){
+        app.load_body("live.html",()=>{
+            app_live.show();
         });
     }
 
@@ -134,7 +176,7 @@ class App{
         var s_class_btn='';
         var index=parseInt(data_p["index"]);
         if(app.s_class_banner_home[index]!=null) s_class_btn=app.s_class_banner_home[index];
-        html+='<div class="group-link link'+data_p["index"]+'">';
+        html+='<div class="group-link link'+data_p["index"]+'" id="banner_'+data_p["id_doc"]+'">';
             html+='<a href="'+data_p["link"]+'" target="_blank" class="ref-link" rel="nofollow"></a>';
             html+='<img class="lzl" src="'+data_p["image"]+'" height="67" alt="Xem bóng đá Xoilac" rel="nofollow">';
             html+='<p>'+data_p["label"]+'</p>';

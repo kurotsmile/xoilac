@@ -73,12 +73,57 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
 
-        PartnerTopLeft();
-        PartnerTopRight();
-        PartnerBottomUp();
-        PartnerBottomDown();
-        PartnerBottomUpM();
-        PartnerBottomDownM();
+        document.addEventListener("DOMContentLoaded", lazyImg("lzl"), {
+            passive: true
+        });
+  
+        function PartnerTopLeft() {
+            var link = document.getElementById('partner1');
+            link.href = 'https://da88.com/?a=exo_566f64993b8461c988c29c522527afa1&utm_source=ldp90phut&utm_medium=topbanner-700x70-1&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/700x70.gif';
+        }
+  
+        function PartnerTopRight() {
+            var link = document.getElementById('partner2');
+            link.href = 'https://da88.com/?a=exo_1fc43c5e53a1ab31668f8dd6d00417c7&utm_source=ldp90phut&utm_medium=topbanner-700x70-2&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/700x70.gif';
+        }
+  
+        function PartnerBottomUp() {
+            var link = document.getElementById('partner3');
+            link.href = 'https://fabet.com/?a=exo_e1b1fb657c010d2d90fd0453a9f356fd&utm_source=ldp90phut&utm_medium=catfish-1095x100-1&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/fabet-1330x90.gif';
+        }
+  
+        function PartnerBottomDown() {
+            var link = document.getElementById('partner4');
+            link.href = 'https://lucky88.com/?a=exo_a8a6def4e75cfcbc9fb4fd68946a21b6&utm_source=ldp90phut&utm_medium=catfish-1095x100-2&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/lucky88-1330x90.gif';
+        }
+        
+        function PartnerBottomUpM() {
+            var link = document.getElementById('partner5');
+            link.href = 'https://fabet.com/?a=exo_e1b1fb657c010d2d90fd0453a9f356fd&utm_source=ldp90phut&utm_medium=catfish-1095x100-1&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/fabet-728x90.gif';
+        }
+  
+        function PartnerBottomDownM() {
+            var link = document.getElementById('partner6');
+            link.href = 'https://lucky88.com/?a=exo_a8a6def4e75cfcbc9fb4fd68946a21b6&utm_source=ldp90phut&utm_medium=catfish-1095x100-2&utm_campaign=cpd&utm_term=live';
+  
+            var img = link.querySelector('img');
+            img.src = 'images/Lucky88-728x90.gif';
+        }
     }, 1000);
 });
 
