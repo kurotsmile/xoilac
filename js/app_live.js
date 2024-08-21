@@ -56,20 +56,18 @@ class App_Live{
     }
 
     conect_data(act_done=null) {
-      
-            $.ajax({
-                url: 'https://nodejs-server-fnc.vercel.app/api/api.js',
-                type: 'GET',
-                success: function(response) {
-                    console.log(response);
-                    if(act_done) act_done(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error Server:', error);
-                    alert("Error!!");
-                }
-            });
-  
+        $.ajax({
+            url: 'https://nodejs-server-fnc.vercel.app/api/api.js',
+            type: 'GET',
+            success: function (response) {
+                console.log(response);
+                if (act_done) act_done(response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error Server:', error);
+                alert("Error!!");
+            }
+        });
     }
 
     get_hours(){

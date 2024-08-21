@@ -49,6 +49,35 @@
             p_tip.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
             cms.add(p_tip);
 
+            var p_tip = new Post();
+            p_tip.id_collection = "news";
+            p_tip.label = "Tin tức";
+            p_tip.data_form_add.fields.push(cms.field('title', "Tiêu đề"));
+            p_tip.data_form_add.fields.push(cms.field('body', "Nội dung","textarea"));
+            p_tip.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
+            cms.add(p_tip);
+
+            var p_tip = new Post();
+            p_tip.id_collection = "bookie";
+            p_tip.label = "Nhà cái";
+            p_tip.data_form_add.fields.push(cms.field('name', "Tên"));
+            p_tip.data_form_add.fields.push(cms.field("tip", "Giới thiệu ngắn", "text"));
+            p_tip.data_form_add.fields.push(cms.field("logo", "Logo", "text"));
+            p_tip.data_form_add.fields.push(cms.field("text_btn", "Nút hiển thị", "text"));
+            p_tip.data_form_add.fields.push(cms.field("link", "Liên kết", "text"));
+            p_tip.data_form_add.fields.push(cms.field("order", "Thứ tự hiển thị", "text"));
+            cms.add(p_tip);
+
+            var p_comment = new Post();
+            p_comment.id_collection = "comment";
+            p_comment.label = "Bình luận";
+            p_comment.data_form_add.fields.push(cms.field('id_match', "ID Trận đấu"));
+            p_comment.data_form_add.fields.push(cms.field('name', "Tên người bình luận"));
+            p_comment.data_form_add.fields.push(cms.field('email', "Email"));
+            p_comment.data_form_add.fields.push(cms.field('msg', "Nội dung"));
+            p_comment.data_form_add.fields.push(cms.field('date', "Thời gian"));
+            cms.add(p_comment);
+
             var live_tv = new Post();
             live_tv.id_collection = "tv_live";
             live_tv.label = "TV Live";
@@ -58,12 +87,21 @@
 
             var ads_banner = new Post();
             ads_banner.id_collection = "ads";
-            ads_banner.label = "Quảng cáo (banner Ads)";
+            ads_banner.label = "Quảng cáo - Trang Home";
             ads_banner.data_form_add.fields.push(cms.field('ads_id', "ID quảng cáo"));
             ads_banner.data_form_add.fields.push(cms.field('image', "Ảnh banner quảng cáo","file"));
             ads_banner.data_form_add.fields.push(cms.field('link', "Liên kết"));
             ads_banner.data_form_add.fields.push(cms.field('position', "Vị trí"));
             cms.add(ads_banner);
+
+            var ads_live = new Post();
+            ads_live.id_collection = "ads_live";
+            ads_live.label = "Quảng cáo - Trang live";
+            ads_live.data_form_add.fields.push(cms.field('ads_id', "ID quảng cáo"));
+            ads_live.data_form_add.fields.push(cms.field('image', "Ảnh banner quảng cáo","file"));
+            ads_live.data_form_add.fields.push(cms.field('link', "Liên kết"));
+            ads_live.data_form_add.fields.push(cms.field('position', "Vị trí"));
+            cms.add(ads_live);
 
             var p_setting = new Post();
             p_setting.type="setting";

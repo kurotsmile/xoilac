@@ -10,7 +10,7 @@ class App{
         let page=this.arg("p");
         if(page){
             if(page=="live"){
-                app.show_page_live();
+                window.open("https://xoilac.com/live.html","_blank");
             }
         }else{
             app.show_page_home();
@@ -156,11 +156,6 @@ class App{
                 }else{
                     $("#main_banner_right").append(app.banner_item(p));
                 }
-            });
-
-            $("#banner_aMQRTZpRm0qHLNj95ifF").click(function(){
-                app.show_page_live();
-                return false;
             });
         });
     }
